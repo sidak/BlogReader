@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<previews>
+
+    <preview
+        name="nexus2.7&apos;&apos;"
+        activity="${packageName}.${activityClass}"
+        config="layout-ldltr-sw320dp-w320dp-h426dp-small-notlong-port-notnight-ldpi-finger-keyssoft-qwerty-navhidden-nonav-320x240-v18"
+        device="2.7&quot; QVGA slider"
+        devicestate="Portrait"
+        target="Android 4.3"
+        theme="@style/AppTheme" >
+    </preview>
+
+</previews>
