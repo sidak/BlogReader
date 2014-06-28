@@ -67,10 +67,14 @@ public class MainListActivity extends ListActivity {
 					if (responseCode==HttpURLConnection.HTTP_OK){
 						InputStream inputStream = connection.getInputStream();
 						Reader reader = new InputStreamReader(inputStream);
-						int contentLength=connection.getContentLength();
-						char[] charArray= new char[contentLength];
-						reader.read(charArray); // it modifies the charArray
-						String responseData = new String(charArray);
+						int nextCharacter; 
+						String responseData = "";
+						while(true){ 
+						    nextCharacter = reader.read(); 
+						    if(nextCharacter == -1)  
+						        break;
+						    responseData += (char) nextCharacter; 
+						}
 						
 						JSONObject jsonResponse = new JSONObject(responseData);
 						String status =jsonResponse.getString("status");
