@@ -1,29 +1,30 @@
 package com.sidak.blogreader;
 
+import java.net.MalformedURLException;
+import java.net.URL;
+
 import android.app.ListActivity;
-import android.content.res.Resources;
 import android.os.Bundle;
-import android.widget.ArrayAdapter;
-import android.widget.Toast;
+import android.util.Log;
 
 public class MainListActivity extends ListActivity {
 	
 	protected String[] mBlogPostTitle;
+	public static final int NUMBER_OF_POSTS=20;
+	public static final String TAG =MainListActivity.class.getSimpleName();
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main_list);
-		//getstringarray() method isn't available from the context 
-		// or activity subclass 
-		//It is a part of the resources object which we can get using the get resources 
-		//method which is available from the above classes 
+		try {
+			URL blogFeedUrl= new URL("http://blog.teamtreehouse.com/api/get_recent_summary/?count="+ NUMBER_OF_POSTS);
 		
-		Resources resources =getResources();
-		mBlogPostTitle= resources.getStringArray(R.array.serial_num);
-		ArrayAdapter<String> adapter=
-				  new ArrayAdapter<String>(this,android.R.layout.simple_list_item_1, mBlogPostTitle);
-		setListAdapter(adapter);
+		} catch (MalformedURLException e) {
+			e.printStackTrace();
+			Log.e(TAG, "Exception caught:",e);	
+		}
+
 		
 		//String message=getString(R.string.no_items);
 		//Toast.makeText(this, message, Toast.LENGTH_LONG).show();
