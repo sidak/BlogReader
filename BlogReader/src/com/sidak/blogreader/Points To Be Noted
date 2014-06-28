@@ -1,2 +1,12 @@
 i have a textview in layout , so that when there is no data , still shows something ,
 otherwise the user will think that data is loading
+
+STATIC IMPLIES THAT WE CAN ACCESS THE NUMBER OF POSTS WITHOUT CREATING AN INSTANCE OF THE CLASS
+
+exception variable is limited to the scope of the catch block
+
+we do nesting of classes , when we want to use that class within our 
+primary class and not use anywhere else
+
+... means we can pass in 0 or more parameters
+we initialise the response code if anything goes wrong in the try block
