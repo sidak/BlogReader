@@ -24,3 +24,31 @@ then the server sends the response code of 200, which means OK
 we need to force close the app, so that oncreate cld be called again
 
 the data transferred in case of json is minimal as compared to xml or other methods
+
+the json array is a little different from the normal array and we can't access the elements by using [i]
+
+read() returns an int, we cast it to char later,
+read() without parameters returns one character,
+A return value of -1 means that we reached the end
+
+if logcat stops showing messages
+try and see what is checked in ddms view
+
+also:
+Try this: 
+
+On Linux or Mac OS X:
+
+./adb kill-server
+./adb start-server
+
+
+onPostExecute works on our UI thread and can update the layout with our results
+
+since the asynctask class is an inner class , we can reference the member var's of MainListActivity
+
+Try to keep nested classes together at the bottom
+
+Everytime u r working with json data , u need to hv try catch blocks
+
+fromHtml returns a type c/d spannable basically strings with html like content
