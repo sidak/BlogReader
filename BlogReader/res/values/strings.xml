@@ -4,6 +4,10 @@
     <string name="app_name">BlogReader</string>
     <string name="hello_world">Hello world!</string>
     <string name="no_items">nothing to display</string>
+    <string name="error_title">Ooh! Sorry !!</string>
+    <string name="error_message">There was an error in getting data from the blog</string>
+    
+    
     
     <string-array name="serial_num" >
         <item >1</item>
