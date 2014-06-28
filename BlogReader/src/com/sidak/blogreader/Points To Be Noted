@@ -10,3 +10,17 @@ primary class and not use anywhere else
 
 ... means we can pass in 0 or more parameters
 we initialise the response code if anything goes wrong in the try block
+
+if network is not there , then networkInfo object will be null
+
+if there is an 'if' condition, that check two things using an &&
+operator , both of them should return booleans and
+thus u can't write:
+if(abc && ghi==9)
+
+if the HttpUrlConnection object is able to connect to the server , 
+then the server sends the response code of 200, which means OK
+
+we need to force close the app, so that oncreate cld be called again
+
+the data transferred in case of json is minimal as compared to xml or other methods
