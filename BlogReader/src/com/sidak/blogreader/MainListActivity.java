@@ -20,7 +20,10 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.text.Html;
 import android.util.Log;
+import android.view.View;
 import android.widget.ArrayAdapter;
+import android.widget.ProgressBar;
+import android.widget.TextView;
 import android.widget.Toast;
 
 public class MainListActivity extends ListActivity {
@@ -29,12 +32,16 @@ public class MainListActivity extends ListActivity {
 	public static final int NUMBER_OF_POSTS=20;
 	public static final String TAG =MainListActivity.class.getSimpleName();
 	protected JSONObject mBlogData;
+	protected ProgressBar mProgressBar;
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main_list);
+		mProgressBar= (ProgressBar)findViewById(R.id.progressBar1);
 		if (isNetworkAvailable()){
+			mProgressBar.setVisibility(View.VISIBLE);
 			GetBlogPostsTask getBlogPostsTask = new GetBlogPostsTask();
 			getBlogPostsTask.execute();
 		}else{
@@ -58,14 +65,10 @@ public class MainListActivity extends ListActivity {
 		return isAvailable;
 	}
 	
-	public void updateList() {
-		 if(mBlogData==null){
-			 AlertDialog.Builder builder = new AlertDialog.Builder(this);
-			 builder.setTitle(getString(R.string.error_title));
-			 builder.setMessage(getString(R.string.error_message));
-			 builder.setPositiveButton(android.R.string.ok, null);
-			 AlertDialog dialog = builder.create();
-			 dialog.show();
+	public void handleBlogResponse() {
+		mProgressBar.setVisibility(View.INVISIBLE);
+		if(mBlogData==null){
+			 updateListForErrors();
 		 }else{
 			 try {
 				JSONArray jsonPosts= mBlogData.getJSONArray("posts");
@@ -85,6 +88,18 @@ public class MainListActivity extends ListActivity {
 			}
 			 
 		 }
+	}
+
+	private void updateListForErrors() {
+		AlertDialog.Builder builder = new AlertDialog.Builder(this);
+		 builder.setTitle(getString(R.string.error_title));
+		 builder.setMessage(getString(R.string.error_message));
+		 builder.setPositiveButton(android.R.string.ok, null);
+		 AlertDialog dialog = builder.create();
+		 dialog.show();
+		 //set the adapter view to the textview containing no_item text
+		 TextView empty =(TextView)getListView().getEmptyView();
+		 empty.setText(getString(R.string.no_items));
 	}
 
 	private class GetBlogPostsTask extends AsyncTask<Object, Void, JSONObject>{
@@ -135,7 +150,7 @@ public class MainListActivity extends ListActivity {
 		@Override
 		protected void onPostExecute(JSONObject result){
 			mBlogData= result;
-			updateList();
+			handleBlogResponse();
 		}
 		
 	}
