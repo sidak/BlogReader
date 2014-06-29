@@ -6,7 +6,8 @@
     <string name="no_items">nothing to display</string>
     <string name="error_title">Ooh! Sorry !!</string>
     <string name="error_message">There was an error in getting data from the blog</string>
-
+    <string name="share_title">How do u want to share </string>
+    
     <string-array name="serial_num">
         <item>1</item>
         <item>2</item>
@@ -20,5 +21,7 @@
     </string-array>
 
     <string name="title_activity_blog_web_view">Blog Post</string>
+
+    <string name="action_share">Share</string>
 
 </resources>

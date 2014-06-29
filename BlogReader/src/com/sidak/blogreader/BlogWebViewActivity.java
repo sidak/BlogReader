@@ -9,17 +9,42 @@ import android.view.MenuItem;
 import android.webkit.WebView;
 
 public class BlogWebViewActivity extends Activity {
-
+	
+	protected String mUrl;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_blog_web_view);
-		
-		Intent intent= getIntent();
+
+		Intent intent = getIntent();
 		Uri blogUri = intent.getData();
+		mUrl=blogUri.toString();
+		WebView webView = (WebView) findViewById(R.id.webView1);
+		webView.loadUrl(mUrl);
+
+	}
+	
+	@Override
+	public boolean onCreateOptionsMenu(Menu menu) {
+		// inflate the menu; this adds items to the action bar if it is there
+		getMenuInflater().inflate(R.menu.menu_blog_post, menu);
+		return true;
+	}
+	
+	@Override
+	public boolean onOptionsItemSelected(MenuItem item) {
+		int itemId =item.getItemId();
 		
-		WebView webView =(WebView)findViewById(R.id.webView1);
-		webView.loadUrl(blogUri.toString());
-		
+		if (itemId==R.id.action_share){
+			sharePost();
+		}
+		return super.onOptionsItemSelected(item);
+	}
+
+	private void sharePost() {
+		Intent shareIntent = new Intent(Intent.ACTION_SEND);
+		shareIntent.setType("text/plain");// set the mime type
+		shareIntent.putExtra(Intent.EXTRA_TEXT, mUrl);
+		startActivity(Intent.createChooser(shareIntent, getString(R.string.action_share)));
 	}
 }
