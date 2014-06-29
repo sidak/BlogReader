@@ -49,6 +49,84 @@ since the asynctask class is an inner class , we can reference the member var's 
 
 Try to keep nested classes together at the bottom
 
+AlertDialog.Builder, Builder is public static class and is nested inside AlertDialog class
+this is done to follow factory patterns
+
+in order to get a string from a resources file u, need to type it in
+getString() method
+
 Everytime u r working with json data , u need to hv try catch blocks
 
 fromHtml returns a type c/d spannable basically strings with html like content
+
+Alert Dialog can hv upto 3 buttons, +ve , -ve , neutral
+
+It is better not to show the "no items to be displayed" unless 
+we are not able to get data, so we empty it first
+
+since that textview is a special textview , we can't use findViewById method
+
+while placing view elements in the graphical layout,
+if orange outline comes , it means we can't add it o'er there
+
+u need to declare mProgressBar in the beginning , since it will be accessed in many places
+
+Method names sould describe exactly what they do
+
+Try to keep method less than the vertical space available
+
+Generally null pointer exception arrives when u don't initialise a variable and access
+it
+
+it is better to add constants for the json keys 
+
+the android layouts that we are using in here:
+simple_list_item_1 has only 1 textview
+while simple_list_item_2 has 2 textviews
+
+the listactivity class has already methods for
+listening to clicks on the list items
+so , just override it
+
+it is also a good practice to keep the override methods together
+
+press ctrl + k , for locating all instances of a particular word in code
+
+
+android system keeps a directory of intent filters , so as to help with opening 
+implicit activities
+
+action bar is supported above android 3.0 
+and for lower versions , we can use open src 
+library action bar sherlock
+
+ctrl + shift + f to format data
+
+ctrl + n, then type xml in search bar
+create a new xml layout ,
+change type to menu
+
+create chooser also shows a very nice message, if there is some error
+and also user can configure how to share data
+
+if u want to test ur emulator for various versions of android
+u need to have the req sdk
+
+while updating the adt, there is a bug since it uses http
+instead of https , so create the new url
+
+
+if there is issue of
+connection with adb was interrupted,
+go into ddms perspective , then click on the drop-down in the left menu
+and then click on "reset adb"
+
+
+Also if u see nothing in the console ,see what perspective u r in 
+
+u can use qualifiers to display resources as per configurations
+
+u make another directory with a qualifier
+generally the menu folder will be used,
+but if the version meets the qualifier, then the values or data 
+inside that directory is used
